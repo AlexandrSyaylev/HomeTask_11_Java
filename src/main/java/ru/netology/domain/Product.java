@@ -1,5 +1,7 @@
 package ru.netology.domain;
 
+import java.util.Objects;
+
 public class Product {
     private int id;
     private String title;
@@ -34,4 +36,17 @@ public class Product {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return id == product.id && price == product.price && Objects.equals(title, product.title);
+    }
+
+    /*@Override
+    public int hashCode() {
+        return Objects.hash(id, title, price);
+    }*/
 }

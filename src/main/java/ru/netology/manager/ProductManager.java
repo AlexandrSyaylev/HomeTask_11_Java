@@ -18,7 +18,12 @@ public class ProductManager {
     public Product[] searchBy(String text) {
         Product[] result = new Product[0]; // тут будем хранить подошедшие запросу продукты
         for (Product product : repository.findALL()) {
+
             if (matches(product, text)) {
+                Product[] tmp = new Product[result.length + 1];
+                System.arraycopy(result, 0, tmp, 0, result.length);
+                tmp[tmp.length - 1] = product;
+                result = tmp;
                 // "добавляем в конец" массива result продукт product
             }
         }
