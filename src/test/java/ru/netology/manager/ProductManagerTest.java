@@ -10,12 +10,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ProductManagerTest {
 
+    ProductRepository repo = new ProductRepository();
+    Book first = new Book(1, "A4", 2000, "Pushkin");
+    Book second = new Book(1, "A5", 10000, "Pushkin");
+    Smartphone firstSmartphone = new Smartphone(1, "A5", 10000, "samsung");
 
     @Test
     public void shouldAddOneBookUseRepoUseManager() {
-        ProductRepository repo = new ProductRepository();
         ProductManager manager = new ProductManager(repo);
-        Book first = new Book(1, "A5", 10000, "Pushkin");
         manager.add(first);
         int expected = 1;
         int actual = repo.findALL().length;
@@ -24,10 +26,8 @@ class ProductManagerTest {
 
     @Test
     public void shouldAddOneSmartphoneToRepoUseManager() {
-        ProductRepository repo = new ProductRepository();
         ProductManager manager = new ProductManager(repo);
-        Smartphone first = new Smartphone(1, "A5", 10000, "samsung");
-        manager.add(first);
+        manager.add(firstSmartphone);
         int expected = 1;
         int actual = repo.findALL().length;
         assertEquals(expected, actual);
@@ -35,11 +35,8 @@ class ProductManagerTest {
 
     @Test
     public void shouldAddOneSmartphoneAndOneBookToRepoUseManager() {
-        ProductRepository repo = new ProductRepository();
         ProductManager manager = new ProductManager(repo);
-        Smartphone first = new Smartphone(1, "A5", 10000, "samsung");
-        Book second = new Book(1, "A5", 10000, "Pushkin");
-        manager.add(first);
+        manager.add(firstSmartphone);
         manager.add(second);
         int expected = 2;
         int actual = repo.findALL().length;
@@ -48,9 +45,7 @@ class ProductManagerTest {
 
     @Test
     public void shouldNotSearchOneBookInRepoUseManager() {
-        ProductRepository repo = new ProductRepository();
         ProductManager manager = new ProductManager(repo);
-        Book second = new Book(1, "A5", 10000, "Pushkin");
         manager.add(second);
         int actual = manager.searchBy("B").length;
         int expected = 0;
@@ -59,10 +54,7 @@ class ProductManagerTest {
 
     @Test
     public void shouldSearchOneBookInRepoUseManager() {
-        ProductRepository repo = new ProductRepository();
         ProductManager manager = new ProductManager(repo);
-        Book first = new Book(1, "A4", 2000, "Pushkin");
-        Book second = new Book(1, "A5", 10000, "Pushkin");
         manager.add((first));
         manager.add(second);
         int actual = manager.searchBy("A5").length;
