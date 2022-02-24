@@ -19,26 +19,26 @@ class ProductManagerTest {
     @Test
     public void shouldAddOneBookUseRepoUseManager() {
         manager.add(first);
-        int expected = 1;
-        int actual = repo.findALL().length;
-        assertEquals(expected, actual);
+        Product[] expected = {first};
+        Product[] actual = repo.findALL();
+        assertArrayEquals(expected, actual);
     }
 
     @Test
     public void shouldAddOneSmartphoneToRepoUseManager() {
         manager.add(firstSmartphone);
-        int expected = 1;
-        int actual = repo.findALL().length;
-        assertEquals(expected, actual);
+        Product[] expected = {firstSmartphone};
+        Product[] actual = repo.findALL();
+        assertArrayEquals(expected, actual);
     }
 
     @Test
     public void shouldAddOneSmartphoneAndOneBookToRepoUseManager() {
         manager.add(firstSmartphone);
         manager.add(second);
-        int expected = 2;
-        int actual = repo.findALL().length;
-        assertEquals(expected, actual);
+        Product[] expected = {firstSmartphone, second};
+        Product[] actual = repo.findALL();
+        assertArrayEquals(expected, actual);
     }
 
     @Test
@@ -53,18 +53,18 @@ class ProductManagerTest {
     public void shouldSearchOneBookInRepoUseManager() {
         manager.add(first);
         manager.add(second);
-        int actual = manager.searchBy("A5").length;
-        int expected = 1;
-        assertEquals(expected, actual);
+        Product[] actual = manager.searchBy("A5");
+        Product[] expected = {second};
+        assertArrayEquals(expected, actual);
     }
 
     @Test
     public void shouldSeekTwoBookInRepoUseManager() {
         manager.add(first);
         manager.add(second);
-        int actual = manager.searchBy("A").length;
-        int expected = 2;
-        assertEquals(expected, actual);
+        Product[] actual = manager.searchBy("A");
+        Product[] expected = {first, second};
+        assertArrayEquals(expected, actual);
     }
 
     @Test
