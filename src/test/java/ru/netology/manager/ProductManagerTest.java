@@ -51,10 +51,19 @@ class ProductManagerTest {
 
     @Test
     public void shouldSearchOneBookInRepoUseManager() {
-        manager.add((first));
+        manager.add(first);
         manager.add(second);
         int actual = manager.searchBy("A5").length;
         int expected = 1;
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSeekTwoBookInRepoUseManager() {
+        manager.add(first);
+        manager.add(second);
+        int actual = manager.searchBy("A").length;
+        int expected = 2;
         assertEquals(expected, actual);
     }
 
