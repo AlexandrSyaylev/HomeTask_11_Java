@@ -67,4 +67,13 @@ class ProductManagerTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void shouldCompareTwoBooksInRepoUseManager() {
+        manager.add(first);
+        manager.add(second);
+        Product[] actual = manager.searchBy("A5");
+        Product[] expected = {second};
+        assertArrayEquals(expected, actual);
+    }
+
 }
