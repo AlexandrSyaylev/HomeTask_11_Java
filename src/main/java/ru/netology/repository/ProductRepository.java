@@ -40,6 +40,7 @@ public class ProductRepository {
         } else {
             throw new NotFoundException("Element with id: " + id + " not found");
             //throw new NotFoundException("Опаньки");
+
         }
 
     }

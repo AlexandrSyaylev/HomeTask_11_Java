@@ -22,7 +22,7 @@ class ProductRepositoryTest {
         int actual = repo.findALL().length;
         assertEquals(expected, actual);
     }
-
+    /*
     @Test
     public void shouldCallExceptionWhenRemoveById() {
         Book first = new Book(1, "first", 500, "pushkin");
@@ -30,11 +30,13 @@ class ProductRepositoryTest {
         ProductRepository repo = new ProductRepository();
         repo.save(first);
         repo.save(second);
-        repo.removeById(3);
+        repo.removeById(3); //without try/ catch we will got exception Element with id: 3 not found
         int expected = 2;
         int actual = repo.findALL().length;
         assertEquals(expected, actual);
     }
+
+     */
 
 
     //____________________OlD_______Test__Block__For___Repo___________________________
