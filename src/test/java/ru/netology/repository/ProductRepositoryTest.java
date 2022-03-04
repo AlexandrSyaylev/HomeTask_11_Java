@@ -2,6 +2,7 @@ package ru.netology.repository;
 
 import org.junit.jupiter.api.Test;
 import ru.netology.domain.Book;
+import ru.netology.domain.NotFoundException;
 import ru.netology.domain.Smartphone;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,7 +23,7 @@ class ProductRepositoryTest {
         int actual = repo.findALL().length;
         assertEquals(expected, actual);
     }
-    /*
+
     @Test
     public void shouldCallExceptionWhenRemoveById() {
         Book first = new Book(1, "first", 500, "pushkin");
@@ -30,13 +31,16 @@ class ProductRepositoryTest {
         ProductRepository repo = new ProductRepository();
         repo.save(first);
         repo.save(second);
-        repo.removeById(3); //without try/ catch we will got exception Element with id: 3 not found
+        try {
+            repo.removeById(3);
+        } catch (NotFoundException e) {
+            System.out.println("Id is not exist");
+        }
+        //repo.removeById(0); //without try/ catch we will got exception Element with id: 3 not found
         int expected = 2;
         int actual = repo.findALL().length;
         assertEquals(expected, actual);
     }
-
-     */
 
 
     //____________________OlD_______Test__Block__For___Repo___________________________
