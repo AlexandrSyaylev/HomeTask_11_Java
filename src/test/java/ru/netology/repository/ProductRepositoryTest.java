@@ -33,7 +33,7 @@ class ProductRepositoryTest {
         repo.save(second);
         try {
             repo.removeById(3);
-        } catch (NotFoundException e) {
+        } catch (NotFoundException e)  {
             System.out.println("Id is not exist");
         }
         //repo.removeById(0); //without try/ catch we will got exception Element with id: 3 not found
