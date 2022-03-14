@@ -1,5 +1,6 @@
 package ru.netology.repository;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.netology.domain.Book;
 import ru.netology.domain.NotFoundException;
@@ -27,19 +28,9 @@ class ProductRepositoryTest {
     @Test
     public void shouldCallExceptionWhenRemoveById() {
         Book first = new Book(1, "first", 500, "pushkin");
-        Book second = new Book(2, "second", 500, "pushkin");
         ProductRepository repo = new ProductRepository();
         repo.save(first);
-        repo.save(second);
-        try {
-            repo.removeById(3);
-        } catch (NotFoundException e)  {
-            System.out.println("Id is not exist");
-        }
-        //repo.removeById(0); //without try/ catch we will got exception Element with id: 3 not found
-        int expected = 2;
-        int actual = repo.findALL().length;
-        assertEquals(expected, actual);
+        NotFoundException thrown = assertThrows(NotFoundException.class, () -> repo.removeById(3));
     }
 
 
